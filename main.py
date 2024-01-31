@@ -103,7 +103,7 @@ def df8b(x):
 def df8c(x):
     return 4/3 * abs(x)**(1/3)
 
-
+#
 
 #####################################
 ####    ZERO-FINDING METHODS     ####
