@@ -11,11 +11,11 @@ This is a homework assignment for my Computational Methods Class
 
 ##  REWRITE ALL FUNCTIONS ITERATIVELY INSTEAD OF RECURSIVELY
 
-import numpy
-import scipy
+# import numpy
+# import scipy
 import math
 
-MAXITER = 100
+MAXITER = 1000
 TOLERANCE = 1e-10
 
 ################################
@@ -49,15 +49,14 @@ def f6(x):
 def f7(x):
     return math.sin(x) - x
 
-
 def f8a(x):
-    abs(x)**(1/3)
+    return abs(x)**(1/3)
 
 def f8b(x):
-    abs(x)**(2/3)
+    return abs(x)**(2/3)
 
 def f8c(x):
-    abs(x)**(4/3)
+    return abs(x)**(4/3)
 
 
     
@@ -95,15 +94,15 @@ def df7(x):
     return math.cos(x) - 1
 
 def df8a(x):
-    return 1/3 * abs(x)**(-2/3)
+    return (x**(1/3))/(3*abs(x))
 
 def df8b(x):
-    return 2/3 * abs(x)**(-1/3)
+    return 2/(3 * (x**1/3))
 
 def df8c(x):
-    return 4/3 * abs(x)**(1/3)
+    return 4/3 * (x**(1/3))
 
-#
+
 
 #####################################
 ####    ZERO-FINDING METHODS     ####
@@ -156,6 +155,7 @@ def newton_helper(f, f_prime, x0, iter):
     print("Current guess: ", x0)
     #find the value of f(x0)
     value = f(float(x0))
+    print("Value:", value)
     # print("f(x)=", value)
     #if found zero, terminate
     if (value == 0):
@@ -164,6 +164,7 @@ def newton_helper(f, f_prime, x0, iter):
         return x0
     #find the value of f'(x0)
     slope = f_prime(float(x0))
+    print("Slope:", slope)
     # print("f'(x)=", slope)
     #check that the slope is not zero
     if (slope == 0):
