@@ -5,7 +5,9 @@ from math_functions import *
 ####    TESTING METHODS AND FUNCTIONS     ####
 ##############################################
     
-# ## Problem 0 ##
+###############
+## Problem 0 ##
+###############
 # print("\nProblem 0\n")
     
 # #Bisection
@@ -26,7 +28,9 @@ from math_functions import *
 
 
 
-# # Problem 1 ##
+###############
+## Problem 1 ##
+###############
 # print("\nProblem 1\n")
     
 # #Bisection
@@ -48,7 +52,12 @@ from math_functions import *
 
     
 
-# ## Problem 2 A##
+###############
+## Problem 2 ##
+###############
+
+#part A
+
 # print("\nProblem 2 A\n")
     
 # #Bisection
@@ -72,8 +81,8 @@ from math_functions import *
 
 
 
+# part B
 
-# ## Problem 2 B##
 # print("\nProblem 2 B\n")
     
 # #Bisection
@@ -96,8 +105,9 @@ from math_functions import *
 
 
 
-
-# ## Problem 3 ##
+###############
+## Problem 3 ##
+###############
 # print("\nProblem 3\n")
     
 # #Bisection
@@ -106,12 +116,12 @@ from math_functions import *
 # bisection(f3, 0, 1)
     
 # #Newton
-print("\nNewton\n")
-# newton(f1, df1, 1) #slope is zero at point x=1
-newton(f3, df3, -1)
-newton(f3, df3, -4)
-newton(f3, df3, -1.5)
-newton(f3, df3, 10)
+# print("\nNewton\n")
+# # newton(f1, df1, 1) #slope is zero at point x=1
+# newton(f3, df3, -1)
+# newton(f3, df3, -4)
+# newton(f3, df3, -1.5)
+# newton(f3, df3, 10)
   
 # #Secant
 # print("\nSecant\n")

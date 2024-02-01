@@ -62,24 +62,28 @@ def bisection(f, x0, x1):
 
 ## NEWTON'S METHOD ##
     
-def newton(f, df, x0):
-    return newton_helper(f, df, x0, 1)
 
-def newton_helper(f, df, x0, iter):
+def newton(f, df, x0):
     for i in range(1, MAXITER+1):
-        print("Current guess: ", x0)
-        #find the value of f(x0)
+        # print("Current guess: ", x0)
+        #find the value of f(x0) 
         value = f(float(x0))
-        # print("f(x)=", value)
+        if (value == "overflow"):
+            print("OVERFLOW, cannot find zero\n")
+            return "overflow"
+        # print("f(x)=", value) # debugging
         #if found zero, terminate
         if (value == 0):
             print ("Iterations:", i)
-            print("Zero at x=", round(x0, 10), "\n")
-            return x0
+            print("Zero at x=", round(x0, 6), "\n")
+            return round(x0, 6)
         #find the value of f'(x0)
         slope = df(float(x0))
-        # print("f'(x)=", slope)
+        # print("f'(x)=", slope) # debugging
         #check that the slope is not zero
+        if (type(slope) == complex):
+            print("COMPLEX NUMBER\n")
+            return "COMPLEX NUMBER"
         if (slope == 0):
             raise ValueError("Slope is zero, cannot find the next guess.\nChoose a different initial guess")
         #find the new guess for x s.t. f(x1) is closer to 0
@@ -87,14 +91,14 @@ def newton_helper(f, df, x0, iter):
         #if the new guess is not different from prev guess (within tolerance) , then terminate
         if (abs(x1-x0) < TOLERANCE):
             print ("Iterations:", i)
-            print("Zero at x≈", round(x1, 10), "\n")
-            return round(x1, 10)
+            print("Zero at x≈", round(x1, 6), "\n")
+            return round(x1, 6)
         else:
             # update the current guess, iterate again
             x0 = x1
     print("REACHED MAXIMUM NUMBER OF ITERATIONS")
-    print("The closest approximation of zero is at x=", round(x0, 10))
-    return round(x0, 10)
+    print("The closest approximation of zero is at x=", round(x0, 6), "\n")
+    return round(x0, 6)
     
 
 

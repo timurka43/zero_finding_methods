@@ -26,7 +26,11 @@ def f5(x):
     return x**3 - 2*x + 2
 
 def f6(x):
-    return (math.exp(x) / (1+math.exp(x))) - 1/2
+    if (x>299999):
+        print("Overflow for math.exp() function")
+        return "overflow"
+    else:
+        return (math.exp(x) / (1+math.exp(x))) - 1/2
 
 def f7(x):
     return math.sin(x) - x
