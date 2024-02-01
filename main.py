@@ -104,25 +104,25 @@ def newton(f, df, x0):
 
 
 ## SECANT METHOD ##
-
 def secant(f, x0, x1):
-        return secant_helper(f, x0, x1, 1)
-    
-def secant_helper(f, x0, x1, iter):
-    print("Current guesses: [", x0, ",", x1, "]")
-    #find the values of f(x0) and f(x1)
-    value0 = f(float(x0))
-    value1 = f(float(x1))
-    # calculate the new guess for zero, x2
-    x2 = x1 - value1 * (x1-x0) / (value1 - value0)
-    # # check if found zero within small uncertainty or 
-    # or if the absolute difference between x2 and x1 is small/negligible
-    # or ran 100 iterations
-    value2 = f(float(x2))
-    if (abs(value2) < 0.000001) or (abs(x2-x1) < 0.000001) or  (iter >= 100):
-        print ("Iterations:", iter)
-        print("Zero at x≈", x2)
-        return x2
-    else:
-        iter += 1
-        return secant_helper(f, x1, x2, iter)
+    for i in range(1, MAXITER+1):
+        # print("Current guesses: [", x0, ",", x1, "]")
+        #find the values of f(x0) and f(x1)
+        value0 = f(float(x0))
+        value1 = f(float(x1))
+        # calculate the new guess for zero, x2
+        x2 = x1 - value1 * (x1-x0) / (value1 - value0)
+        value2 = f(float(x2))
+        # # check if found zero within small uncertainty or 
+        # or if the absolute difference between x2 and x1 is small/negligible
+        if (abs(value2) < TOLERANCE) or (abs(x2-x1) < TOLERANCE):
+            print ("Iterations:", i)
+            print("Zero at x≈", round(x2, 6))
+            return round(x2, 6)
+        else:
+             # update guesses 
+            x0 = x1 
+            x1 = x2
+    print("REACHED MAXIMUM NUMBER OF ITERATIONS")
+    print("The closest approximation of zero is at x=", round(x0, 6), "\n")
+    return round(x0, 6)
