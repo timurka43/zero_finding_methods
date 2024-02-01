@@ -10,8 +10,8 @@ from math_functions import *
     
 # #Bisection
 # print("\nBisection\n")
-bisection(f0, 0, 2)
-bisection(f0, 0, 10)
+# bisection(f0, 0, 2)
+# bisection(f0, 0, 10)
     
 # #Newton
 # print("\nNewton\n")
@@ -30,7 +30,7 @@ bisection(f0, 0, 10)
 # print("\nProblem 1\n")
     
 # #Bisection
-print("\nBisection\n")
+# print("\nBisection\n")
 # bisection(f1, 1, 2)
 # bisection(f1, 0, 1)
     
@@ -60,7 +60,7 @@ print("\nBisection\n")
 # print("\nNewton\n")
 # newton(f2a, df2a, -2)
 # newton(f2a, df2a, -1)
-# # newton(f2a, f2a_prime, 0) #error, slope is zero
+# # newton(f2a, df2a, 0) #error, slope is zero
 # newton(f2a, df2a, 1)
 # newton(f2a, df2a, 2)
   
@@ -83,7 +83,7 @@ print("\nBisection\n")
     
 # #Newton
 # print("\nNewton\n")
-# # newton(f1, f1_prime, 1) #slope is zero at point x=1
+# newton(f2b, df2b, 1)
 # newton(f2b, df2b, -2)
 # newton(f2b, df2b, -0.1)
 # newton(f2b, df2b, 1)
@@ -106,12 +106,12 @@ print("\nBisection\n")
 # bisection(f3, 0, 1)
     
 # #Newton
-# print("\nNewton\n")
-# # newton(f1, f1_prime, 1) #slope is zero at point x=1
-# newton(f3, df3, -1)
-# newton(f3, df3, -4)
-# newton(f3, df3, -1.5)
-# newton(f3, df3, 10) # failed, stopped at 100 iterations
+print("\nNewton\n")
+# newton(f1, df1, 1) #slope is zero at point x=1
+newton(f3, df3, -1)
+newton(f3, df3, -4)
+newton(f3, df3, -1.5)
+newton(f3, df3, 10)
   
 # #Secant
 # print("\nSecant\n")

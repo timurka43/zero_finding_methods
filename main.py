@@ -47,52 +47,54 @@ def bisection(f, x0, x1):
         #termination condition: found midpoint that produced zero in the variable middle
         if (abs(middle) < TOLERANCE):
             print ("Iterations:", i)
-            print("Zero at x=", round(x_mid, 5))
-            return round(x_mid, 5)
+            print("Zero at x=", round(x_mid, 10))
+            return round(x_mid, 10)
         #updating boundaries
         elif (left*middle < 0): # if zero is in the left half
             x1 = x_mid # causes iteration on the left half
         elif (middle*right < 0): # if zero is in the right half
             x0 = x_mid # causes iteration on the right half
     print("REACHED MAXIMUM NUMBER OF ITERATIONS")
-    print("The closest approximation of zero is at x=", round(x_mid, 5))
-    return round(x_mid, 5)
+    print("The closest approximation of zero is at x=", round(x_mid, 10))
+    return round(x_mid, 10)
     
 
 
 ## NEWTON'S METHOD ##
     
-def newton(f, f_prime, x0):
-    return newton_helper(f, f_prime, x0, 1)
+def newton(f, df, x0):
+    return newton_helper(f, df, x0, 1)
 
-def newton_helper(f, f_prime, x0, iter):
-    print("Current guess: ", x0)
-    #find the value of f(x0)
-    value = f(float(x0))
-    print("Value:", value)
-    # print("f(x)=", value)
-    #if found zero, terminate
-    if (value == 0):
-        print ("Iterations:", iter)
-        print("Zero at x=", x0, "\n")
-        return x0
-    #find the value of f'(x0)
-    slope = f_prime(float(x0))
-    print("Slope:", slope)
-    # print("f'(x)=", slope)
-    #check that the slope is not zero
-    if (slope == 0):
-        raise ValueError("Slope is zero, cannot find the next guess.\nChoose a different initial guess")
-    #find the new guess for x s.t. f(x1)=0
-    x1 = x0 - float(value/slope)
-    #if the new guess produces zero or it's not different from prev. guess, or MAXITER iterations, terminate
-    if (f(x1) == 0) or (abs(x1-x0) < TOLERANCE) or (iter >= MAXITER):
-        print ("Iterations:", iter)
-        print("Zero at x≈", x1, "\n")
-        return x1
-    else:
-        iter += 1
-        return newton_helper(f, f_prime, x1, iter)
+def newton_helper(f, df, x0, iter):
+    for i in range(1, MAXITER+1):
+        print("Current guess: ", x0)
+        #find the value of f(x0)
+        value = f(float(x0))
+        # print("f(x)=", value)
+        #if found zero, terminate
+        if (value == 0):
+            print ("Iterations:", i)
+            print("Zero at x=", round(x0, 10), "\n")
+            return x0
+        #find the value of f'(x0)
+        slope = df(float(x0))
+        # print("f'(x)=", slope)
+        #check that the slope is not zero
+        if (slope == 0):
+            raise ValueError("Slope is zero, cannot find the next guess.\nChoose a different initial guess")
+        #find the new guess for x s.t. f(x1) is closer to 0
+        x1 = x0 - float(value/slope)
+        #if the new guess is not different from prev guess (within tolerance) , then terminate
+        if (abs(x1-x0) < TOLERANCE):
+            print ("Iterations:", i)
+            print("Zero at x≈", round(x1, 10), "\n")
+            return round(x1, 10)
+        else:
+            # update the current guess, iterate again
+            x0 = x1
+    print("REACHED MAXIMUM NUMBER OF ITERATIONS")
+    print("The closest approximation of zero is at x=", round(x0, 10))
+    return round(x0, 10)
     
 
 
