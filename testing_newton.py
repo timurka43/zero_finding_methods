@@ -76,13 +76,28 @@ from main import *
 # '''
 
 
-## Problem 8 ##
-print("\nProblem 8\n")
+# ## Problem 8 ##
+# print("\nProblem 8\n")
 
-# a and b won't work, c will work (according to Autry)
-newton(f8a, df8a, 1)
+# # a and b won't work, c will work (according to Autry)
+# newton(f8a, df8a, 1) 
+# '''
+# the second guess in part a is -2, which produces a complex number once plugged into the f'(x)
+# since f'(x) includes the term x**1/3. As such, the function cannot continue generating as it
+# is not designed to work with complex numbers.
+# '''
+
 # newton(f8b, df8b, 1)
+# '''
+# same issue here with complex numbers as above, since the second guess is -0.5
+# '''
+
 # newton(f8c, df8c, 1)
+# '''
+# this one works well because, unlike parts a and b, the curve here inverts and allows for the slopes 
+# to point to positive values throughout all guesses, never going beyond zero to the left and causing 
+# complex numbers to appear in calculations 
+# '''
 
 
 
