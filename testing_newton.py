@@ -1,4 +1,5 @@
 from main import *
+from math_functions import *
 
 ##############################################
 ####       TESTING NEWTON METHOD          ####

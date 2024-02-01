@@ -18,50 +18,6 @@ import math
 MAXITER = 1000
 TOLERANCE = 1e-10
 
-    
-
-################################################
-####  MATH FUNCTIONS'S FIRST DERIVATIVES    ####
-################################################
-
-
-def df0(x):
-    return 2
-
-def df1(x):
-    return 3*(x**2) - 3
-
-def df2a(x):
-    return 2*x
-
-def df2b(x):
-    return 2*x
-
-def df3(x):
-    return -(math.sin(x)) - 1
-
-def df4(x):
-    return df1(x)
-
-def df5(x):
-    return 3*(x**2) - 2
-
-def df6(x):
-    return math.exp(x)/((1+math.exp(x))**2)
-
-def df7(x):
-    return math.cos(x) - 1
-
-def df8a(x):
-    return (x**(1/3))/(3*abs(x))
-
-def df8b(x):
-    return 2/(3 * (x**(1/3)))
-
-def df8c(x):
-    return 4/3 * (x**(1/3))
-
-
 
 #####################################
 ####    ZERO-FINDING METHODS     ####
@@ -76,32 +32,31 @@ def df8c(x):
 # post-conditions:
 #   returns the real number x s.t. f(x) ≈ 0 or 
 #   in the case that such x was not found 
-#   within 100 iterations, returns the approximated
+#   within MAXITER iterations, returns the approximated
 #   value of such x
 def bisection(f, x0, x1):
-    return bisection_helper(f, x0, x1, 1) 
-
-#recursive helper funciton 
-def bisection_helper(f, x0, x1, iter):
-    print("Current Interval [", x0, ",", x1, "]" )
-    midpoint = float(x0+x1)/2 # calculate midpoint 
-    left = f(float(x0)) # calculate and store f(x) for the three values
-    right =  f(float(x1))
-    middle = f(midpoint)
-    if (left * right >= 0):
-        raise ValueError("The initial guess points must produce opposite signs when plugged into the function")
-    #base case: found midpoint on x-axis or performed 100 iterations
-    if (middle < 0.00001 and middle > -0.00001) or (iter >= 100): #termination conditions: 100 iterations or found zero within 0.00001 uncertainty
-        print ("Iterations:", iter)
-        print("Zero at x=", midpoint)
-        return midpoint
-    #recursive cases
-    elif (left*middle < 0): # if zero is in the left half
-        iter += 1
-        return bisection_helper(f, x0, midpoint, iter) # recurse on the left half
-    elif (middle*right < 0): # if zero is in the right half
-        iter += 1
-        return bisection_helper(f, midpoint, x1, iter) # recurse on the right half
+    ## run the loop iteratively at most MAXITER times
+    for i in range(1, MAXITER+1):
+        # print("Current Interval [", x0, ",", x1, "]" )
+        x_mid = float(x0+x1)/2 # calculate midpoint 
+        left = f(float(x0)) # calculate and store f(x) for the three values
+        right =  f(float(x1))
+        middle = f(x_mid)
+        if (left * right >= 0):
+            raise ValueError("The initial guess points must produce opposite signs when plugged into the function")
+        #termination condition: found midpoint that produced zero in the variable middle
+        if (abs(middle) < TOLERANCE):
+            print ("Iterations:", i)
+            print("Zero at x=", round(x_mid, 5))
+            return round(x_mid, 5)
+        #updating boundaries
+        elif (left*middle < 0): # if zero is in the left half
+            x1 = x_mid # causes iteration on the left half
+        elif (middle*right < 0): # if zero is in the right half
+            x0 = x_mid # causes iteration on the right half
+    print("REACHED MAXIMUM NUMBER OF ITERATIONS")
+    print("The closest approximation of zero is at x=", round(x_mid, 5))
+    return round(x_mid, 5)
     
 
 
