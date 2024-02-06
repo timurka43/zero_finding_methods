@@ -83,9 +83,9 @@ if __name__ == "__main__":
 
 	# Example scenario with initial infection of 1% of population and R0=5.
 	# Solving until time T=4, with 1000 intermediate steps for plotting.
-	init = [.99, 0.01, 0]
-	T = 4
-	R0 = 5
+	init = [.999, 0.001, 0]
+	T = 10
+	R0 = 4
 	N = 1000
 
 	# Get the values at time T=4.

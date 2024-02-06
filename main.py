@@ -2,7 +2,7 @@
 Title: Zero Finding Methods
 Author: Timur Kasimov (Grinnell, 2025)
 Data Created: January 29, 2024
-Date Updated: January 30, 2024
+Date Updated: February 6, 2024
 
 Purpose: Implement and test 3 zero finding methods: Bisection, Newton's, and Secant methods.
 

@@ -127,4 +127,3 @@ print("\nProblem 3\n")
 print("\nSecant\n")
 secant(f3, -20, -10)
 secant(f3, 0, 1)
-
