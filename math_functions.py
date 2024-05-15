@@ -78,11 +78,15 @@ def df6(x):
 def df7(x):
     return math.cos(x) - 1
 
+#updated the below derivatives, were previously wrong
 def df8a(x):
-    return (x**(1/3))/(3*abs(x))
+    return (x/(3*abs(x)**(5/3)))
 
 def df8b(x):
-    return 2/(3 * (x**(1/3)))
+    return (2*x/(3*abs(x)**(4/3)))
 
 def df8c(x):
-    return 4/3 * (x**(1/3))
+    if (x!= 0):
+        return (4*x/(3*abs(x)**(2/3)))
+    else:
+        return 0

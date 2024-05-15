@@ -1,4 +1,4 @@
-from main import *
+from methods import *
 from math_functions import *
 
 ##############################################

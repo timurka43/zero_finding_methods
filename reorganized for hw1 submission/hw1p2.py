@@ -104,13 +104,16 @@ def df7(x):
     return math.cos(x) - 1
 
 def df8a(x):
-    return (x**(1/3))/(3*abs(x))
+    return (x/(3*abs(x)**(5/3)))
 
 def df8b(x):
-    return 2/(3 * (x**(1/3)))
+    return (2*x/(3*abs(x)**(4/3)))
 
 def df8c(x):
-    return 4/3 * (x**(1/3))
+    if (x!= 0):
+        return (4*x/(3*abs(x)**(2/3)))
+    else:
+        return 0
 
 
 
@@ -214,7 +217,7 @@ if __name__ == "__main__":
     print("\n\nProblem 5\n")
 
     # a and b won't work, c will work (according to Autry)
-    newton(f8a, df8a, 1) 
+    # newton(f8a, df8a, 1) 
     '''
     the second guess in part a is -2, which produces a complex number once plugged into the f'(x)
     since f'(x) includes the term x**1/3. As such, the function cannot continue generating as it
@@ -222,11 +225,17 @@ if __name__ == "__main__":
 
     I implemented the Newton's method so it provides a helpful message without
     throwing an error.
+
+
+    UPDATE: my derivatives were wrong for df8a, df8b, df8c functions. 
+    This problem no longer works as it produces a zero slope. However, no more complex numbers
     '''
 
     newton(f8b, df8b, 1)
     '''
     Same issue here with complex numbers as above, since the second guess is -0.5
+
+    UPDATE: b works now?
     '''
 
     newton(f8c, df8c, 1)

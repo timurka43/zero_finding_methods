@@ -1,4 +1,4 @@
-from main import *
+from methods import *
 from math_functions import *
 
 ##############################################
@@ -102,11 +102,15 @@ all guesses seem to work
 print("\nProblem 8\n")
 
 # a and b won't work, c will work (according to Autry)
-newton(f8a, df8a, 1) 
+# newton(f8a, df8a, 1) 
+
 '''
 the second guess in part a is -2, which produces a complex number once plugged into the f'(x)
 since f'(x) includes the term x**1/3. As such, the function cannot continue generating as it
 is not designed to work with complex numbers.
+
+UPDATE: since I updated the derivative for f8a, this call no longer works as it produces 
+zero slope
 '''
 
 newton(f8b, df8b, 1)
